@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VM="clr-namespace:KPE_App.ViewModels"
+             x:Class="KPE_App.ViewPages.StundenÜbersichtPage"
+             xmlns:objects="clr-namespace:KPE_App.Objects"
+             x:DataType="VM:StundenViewModel"
+             Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="*,*"  ColumnSpacing="2" RowDefinitions="*,Auto" RowSpacing="0">
+        <CollectionView ItemsSource="{Binding Stunden}" SelectionMode="None" Grid.ColumnSpan="2" x:Name="mCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type objects:StundenEintragObj}">
+                    <Grid Padding="5">
+                        <Frame  BorderColor="{ AppThemeBinding Dark=White,Light=Black}" Background="Transparent" Padding="5,1,0,1">
+                            <Grid Padding="0" ColumnDefinitions="120,200,*" >
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Padding="5">
+                                    <Label Style="{StaticResource MediumLabel}" Text="Vorname:"/>
+                                    <Label Style="{StaticResource MediumLabel}" Text="Nachname:"/>
+                                    <Label Style="{StaticResource MediumLabel}" Text="Projektnummer:"/>
+                                    <Label Style="{StaticResource SmallLabel}" Text="Freitext:"/>
+                                    <Label Style="{StaticResource LargeLabel}" Text="Anfangs Datum:"/>
+                                    <Label Style="{StaticResource LargeLabel}" Text="End Datum:"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout  Grid.Column="1" VerticalOptions="Center" Padding="5">
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Vorname}" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Nachname}" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding ProjektNummer}" />
+                                    <Label Style="{StaticResource SmallLabel}" Text="{Binding FreiText}" />
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding AnfangDatum}"/>
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding EndDatum}"/>
+                                </VerticalStackLayout>
+                                <ImageButton HorizontalOptions="Center" Grid.Column="2" Source="{StaticResource DeleteStundeBtn}" Command="{Binding BindingContext.RemoveStundeCommand, Source={Reference mCollectionView}}" CommandParameter="{Binding .}" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Get Stunden" Command="{Binding GetStundenCommand}" IsEnabled="{Binding IsNotBusy}" Grid.Row="1" Grid.Column="0" Margin="8"/>
+
+        <Button Text="Save Stunden" IsEnabled="{Binding IsNotBusy}" Grid.Row="1" Grid.Column="1" Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Fill" VerticalOptions="Center" Color="{StaticResource Primary}" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</ContentPage>

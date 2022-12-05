@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="KPE_App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:KPE_App.ViewPages"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="logo_img.png"
+                BackgroundColor="{AppThemeBinding Dark=Black,Light=Black}"
+                SemanticProperties.Description="KPE-Logo!"
+                HeightRequest="200"
+                Margin="20,20,20,20"
+                HorizontalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+        
+    <FlyoutItem Title="Main" FlyoutIcon="{StaticResource IconOne}">
+        <Tab Title="Main" Icon="{StaticResource IconOne}">
+            <ShellContent
+                Title="SQL Query Versuch"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Chart" Icon="{StaticResource IconTwoSQL}">
+            <ShellContent
+                Title="Chart"
+                ContentTemplate="{DataTemplate local:PageTwo}"
+                Route="PageTwo" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Stunden" FlyoutIcon="{StaticResource IconTwo}">
+
+        <Tab Title="Eingabe" Icon="{StaticResource IconOne}">
+            <ShellContent
+                Title="Eingabe"
+                ContentTemplate="{DataTemplate local:StundenEingabePage}"
+                Route="StundenEingabePage" />
+        </Tab>
+        <Tab Title="Übersicht" Icon="{StaticResource IconTwo}">
+            <ShellContent
+                Title="Übersicht"
+                ContentTemplate="{DataTemplate local:StundenÜbersichtPage}"
+                Route="StundenÜbersichtPage" />
+        </Tab>
+        <Tab Title="Einstellungen" Icon="{StaticResource IconThree}">
+            <ShellContent
+                Title="Einstellungen"
+                ContentTemplate="{DataTemplate local:StundenEinstellungenPage}"
+                Route="StundenEinstellungenPage" />
+        </Tab>
+        <Tab Title="Nix" Icon="{StaticResource IconFour}">
+            <ShellContent
+                Title="Nix"
+                ContentTemplate="{DataTemplate local:StundenNixPage}"
+                Route="StundenNixPage" />
+        </Tab>
+
+    </FlyoutItem>
+
+</Shell>
