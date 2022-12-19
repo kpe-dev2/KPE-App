@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:KPE_App.Controls"
+             xmlns:VM="clr-namespace:KPE_App.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="KPE_App.ViewPages.AnmeldenPage"
+             Title="Anmelden">
+
+    <ContentPage.BindingContext>
+        <VM:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <!--<ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>-->
+
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+        
+        <Label Text="Anmelden" Margin="0,10,10,10" FontSize="30" FontAutoScalingEnabled="False" HorizontalOptions="Center"/>
+        
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <!--<Frame BorderColor="{ AppThemeBinding Dark=White,Light=Black}" Background="Transparent" Padding="5">-->
+                <VerticalStackLayout>
+                <controls:OutlinedEntryControl Placeholder="E-Mail-Adresse" Keyboard="Email" WidthRequest="200" Text="{Binding EMail}"/>
+                <controls:OutlinedEntryControl Placeholder="Passwort" IsPassword="True" WidthRequest="200" Text="{Binding Password}"/>
+               
+                <!--<Entry Placeholder="Passwort" IsPassword="True" WidthRequest="150" Margin="5">
+                    <Entry.Behaviors>
+                        <toolkit:CharactersValidationBehavior
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                Flags="ValidateOnValueChanged"
+                                MinimumCharacterTypeCount="6"/>
+                    </Entry.Behaviors>
+                </Entry>-->
+            </VerticalStackLayout>
+            <!--</Frame>-->
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Button x:Name="GetProjectsBtn" Text="GetProjects" SemanticProperties.Hint="Token auslesen" Command="{Binding GetProjectsCommand}" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+            <Button x:Name="GetTokenBtn" Text="GetToken" SemanticProperties.Hint="Token auslesen" Command="{Binding GetTokenInfoCommand}" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+            <Button x:Name="SubmitBtn" Text="Absenden" SemanticProperties.Hint="Daten absenden" Command="{Binding PushLoginInfoCommand}" IsEnabled="{Binding EnableSubmitBtn}" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>

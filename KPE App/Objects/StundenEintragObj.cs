@@ -11,7 +11,7 @@ namespace KPE_App.Objects
     {
         public string Vorname { get; set; }
         public string Nachname { get; set; }
-        public int ProjektNummer { get; set; }
+        public string ProjektNummer { get; set; }
         public string FreiText { get; set; }
         public DateTime AnfangDatum { get; set; }
         public DateTime EndDatum { get; set; }

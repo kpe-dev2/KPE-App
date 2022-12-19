@@ -2,11 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KPE_App.ViewPages.StundenEinstellungenPage"
+             xmlns:vm="clr-namespace:KPE_App.ViewModels"
              Title="Einstellungen">
-    <VerticalStackLayout>
+
+    <ContentPage.BindingContext>
+        <vm:StundenSettingsViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            Text="Online Modus:"
+            Padding="5,5,0,0"
+            FontSize="Title" />
+        <Switch 
+            x:Name="OnlineSwitch"
+            IsToggled="{Binding OnlineMode}"
+            VerticalOptions="Start"
+            Margin="0,0,5,0"
+            HorizontalOptions="End" ScaleX="1.2" ScaleY="1.2"/>
+    </Grid>
 </ContentPage>

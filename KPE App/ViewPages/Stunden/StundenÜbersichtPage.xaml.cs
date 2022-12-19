@@ -7,6 +7,6 @@ public partial class StundenÜbersichtPage : ContentPage
 	public StundenÜbersichtPage(StundenViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext= viewModel;
+		BindingContext = viewModel;
 	}
 }

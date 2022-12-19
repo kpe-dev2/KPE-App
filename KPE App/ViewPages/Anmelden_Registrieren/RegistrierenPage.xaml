@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:KPE_App.Controls"
+             x:Class="KPE_App.ViewPages.RegistrierenPage"
+             Title="Registrieren">
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+
+        <Label Text="Registrieren" Margin="0,10,10,10" FontSize="30" FontAutoScalingEnabled="False" HorizontalOptions="Center"/>
+
+        <HorizontalStackLayout>
+            
+                <VerticalStackLayout>
+                    <controls:OutlinedEntryControl Placeholder="E-Mail-Adresse" Keyboard="Numeric" WidthRequest="200"/>
+                    <controls:OutlinedEntryControl Placeholder="Passwort" IsPassword="True" WidthRequest="200"/>
+                    <controls:OutlinedEntryControl Placeholder="Passwort bestätigen"  IsPassword="True" WidthRequest="200"/>
+                </VerticalStackLayout>
+            
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button x:Name="SubmitBtn" Text="Absenden" SemanticProperties.Hint="Daten absenden" Clicked="OnSubmitClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>

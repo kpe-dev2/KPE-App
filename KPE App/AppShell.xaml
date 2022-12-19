@@ -4,19 +4,35 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:KPE_App.ViewPages"
+    xmlns:controls="clr-namespace:KPE_App.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:VM="clr-namespace:KPE_App.ViewModels"
     Shell.FlyoutBehavior="Flyout">
+
+    <Shell.BindingContext>
+        <VM:LoginViewModel/>
+    </Shell.BindingContext>
+ 
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding Icon}" Margin="5" HeightRequest="45" />
+                <Label Grid.Column="1" Text="{Binding Text}" FontAttributes="Italic" VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
 
     <Shell.FlyoutHeader>
         <Grid>
-            <Image Source="logo_img.png"
-                BackgroundColor="{AppThemeBinding Dark=Black,Light=Black}"
+            <Image Source="{AppThemeBinding Dark=logo_img.png,Light=logo_img_dark.png}"
+                BackgroundColor="{AppThemeBinding Dark=Black,Light=White}"
                 SemanticProperties.Description="KPE-Logo!"
                 HeightRequest="200"
                 Margin="20,20,20,20"
                 HorizontalOptions="Center"/>
         </Grid>
     </Shell.FlyoutHeader>
-        
+
     <FlyoutItem Title="Main" FlyoutIcon="{StaticResource IconOne}">
         <Tab Title="Main" Icon="{StaticResource IconOne}">
             <ShellContent
@@ -31,8 +47,8 @@
                 Route="PageTwo" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Stunden" FlyoutIcon="{StaticResource IconTwo}">
 
+    <FlyoutItem Title="Stunden" FlyoutIcon="{StaticResource IconTwo}">
         <Tab Title="Eingabe" Icon="{StaticResource IconOne}">
             <ShellContent
                 Title="Eingabe"
@@ -57,7 +73,48 @@
                 ContentTemplate="{DataTemplate local:StundenNixPage}"
                 Route="StundenNixPage" />
         </Tab>
-
     </FlyoutItem>
 
+    <FlyoutItem Title="Registrieren" FlyoutIcon="{StaticResource Anmelden_Registrieren}">
+        <!--<Tab Title="Anmelden" Icon="{StaticResource AnmeldenTab}">
+            <ShellContent
+                Title="Anmelden"
+                ContentTemplate="{DataTemplate local:AnmeldenPage}"
+                Route="AnmeldenPage" />
+        </Tab>-->
+        <Tab Title="Registrieren" Icon="{StaticResource RegistrierenTab}">
+            <ShellContent
+                Title="Registrieren"
+                ContentTemplate="{DataTemplate local:RegistrierenPage}"
+                Route="RegistrierenPage" />
+        </Tab>
+    </FlyoutItem>
+
+    <!--<MenuItem Text="Help"
+              IconImageSource="{StaticResource Help}"
+              Command="{Binding HelpCommand}"
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />
+    <MenuItem Text="About"
+              IconImageSource="{StaticResource About}"
+              Command="{Binding AboutCommand}"
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />-->
+    
+    <Shell.FlyoutFooter>
+        <ScrollView>
+            <VerticalStackLayout>
+                
+                <HorizontalStackLayout>
+                    <controls:OutlinedEntryControl Placeholder="E-Mail-Adresse" Keyboard="Email" WidthRequest="150" Text="{Binding EMail}" Margin="5"/>
+                    <controls:OutlinedEntryControl Placeholder="Passwort" IsPassword="True" WidthRequest="150" Text="{Binding Password}" Margin="5"/>
+                </HorizontalStackLayout>
+                
+                <HorizontalStackLayout>
+                    <Button Text="Login" SemanticProperties.Hint="Daten absenden" WidthRequest="150" Margin="5" Command="{Binding PushLoginInfoCommand}" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+                    <Button Text="Logout" SemanticProperties.Hint="Benutzer abmelden" WidthRequest="150" Margin="5" IsEnabled="False" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+                </HorizontalStackLayout>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Shell.FlyoutFooter>
+    
 </Shell>

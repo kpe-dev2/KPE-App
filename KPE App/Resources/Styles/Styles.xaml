@@ -20,8 +20,6 @@
                Size="22"
                Color="{StaticResource Primary}"
                Glyph="{x:Static local:IconFont.Atom}"/> 
-    <!--Atom-->
-    
     <FontImage x:Key="IconThree"
                FontFamily="FontAwesome"
                Size="22"
@@ -32,13 +30,37 @@
                Size="22"
                Color="{StaticResource Primary}"
                Glyph="{x:Static local:IconFont.DiceFour}"/>
-
-
     <FontImage x:Key="DeleteStundeBtn"
                FontFamily="FontAwesome"
                Size="22"
-               Color="{StaticResource White}"
+               Color="{StaticResource Primary}"
                Glyph="{x:Static local:IconFont.TimesCircle}"/>
+    <FontImage x:Key="Anmelden_Registrieren"
+               FontFamily="FontAwesome"
+               Size="22"
+               Color="{StaticResource Primary}"
+               Glyph="{x:Static local:IconFont.Portrait}"/>
+    <FontImage x:Key="AnmeldenTab"
+               FontFamily="FontAwesome"
+               Size="22"
+               Color="{StaticResource Primary}"
+               Glyph="{x:Static local:IconFont.SignInAlt}"/>
+    <FontImage x:Key="RegistrierenTab"
+               FontFamily="FontAwesome"
+               Size="22"
+               Color="{StaticResource Primary}"
+               Glyph="{x:Static local:IconFont.Tasks}"/>
+    <FontImage x:Key="Help"
+               FontFamily="FontAwesome"
+               Size="22"
+               Color="{StaticResource Primary}"
+               Glyph="{x:Static local:IconFont.QuestionCircle}"/>
+    <FontImage x:Key="About"
+               FontFamily="FontAwesome"
+               Size="22"
+               Color="{StaticResource Primary}"
+               Glyph="{x:Static local:IconFont.InfoCircle}"/>
+
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />

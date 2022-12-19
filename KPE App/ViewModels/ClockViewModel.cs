@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using IntelliJ.Lang.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +11,7 @@ using System.Threading.Tasks;
 namespace KPE_App.ViewModels
 
 {
-    internal class ClockViewModel : ObservableObject
+    public partial class ClockViewModel : BaseViewModel
     {
 
         #region Ctor
@@ -43,6 +46,7 @@ namespace KPE_App.ViewModels
         #endregion
 
 
-
+        #region Commands
+        #endregion
     }
 }

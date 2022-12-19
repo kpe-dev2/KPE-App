@@ -33,7 +33,7 @@ public partial class PageTwo : ContentPage
     }
 
 
-    private async Task<List<ShiftDataObj>> DBTest()
+    private static async Task<List<ShiftDataObj>> DBTest()
     {
         List<ShiftDataObj> data = new();
         SqlConnectionStringBuilder builder = new()
@@ -53,7 +53,7 @@ public partial class PageTwo : ContentPage
         }
         catch (Exception ex)
         {
-            //Console.WriteLine(ex.Message);
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
         }
 
 

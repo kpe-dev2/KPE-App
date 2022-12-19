@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VM="clr-namespace:KPE_App.ViewModels"
              x:Class="KPE_App.ViewPages.StundenEingabePage"
+             xmlns:objects="clr-namespace:KPE_App.Objects"
+             x:DataType="VM:StundenViewModel"
              Title="Eingabe">
+    
     <VerticalStackLayout HorizontalOptions="CenterAndExpand">
         <Label Text="Stunden Erfassung" Margin="0,10,10,10" FontSize="30" FontAutoScalingEnabled="False" HorizontalOptions="Center"/>
         <HorizontalStackLayout>
@@ -11,6 +15,7 @@
                     <Label Text="Vorname:" Margin="0,10,10,10"/>
                     <Label Text="Name:" Margin="0,10,10,10"/>
                     <Label Text="Projekt Nummer:" Margin="0,10,10,10"/>
+                    <Label Text="Freitext:" Margin="0,10,10,10"/>
                     <Label Text="Anfangs Datum:" Margin="0,10,10,10"/>
                     <Label Text="Anfangs Zeit:" Margin="0,10,10,10"/>
                     <Label Text="End Datum:" Margin="0,10,10,10"/>
@@ -20,22 +25,21 @@
 
             <Frame Opacity="1" BackgroundColor="Transparent" BorderColor="White">
                 <VerticalStackLayout >
-                    <Entry Placeholder="Vorname"  />
-                    <Entry Placeholder="Name" />
-                    <Entry Placeholder="Projekt Nummer" />
-                    <DatePicker />
-                    <TimePicker />
-                    <DatePicker />
-                    <TimePicker />
-                    
-
+                    <Entry Placeholder="Vorname" Text="{Binding Vorname}" />
+                    <Entry Placeholder="Nachname" Text="{Binding Nachname}" />
+                    <Entry Placeholder="Projekt Nummer" Text="{Binding ProjektNummer}" />
+                    <Entry Placeholder="Freitext" Text="{Binding FreiText}" />
+                    <DatePicker Date="{Binding DateAnfang}" />
+                    <TimePicker Time="{Binding TimeAnfang}"/>
+                    <DatePicker Date="{Binding DateEnde}"/>
+                    <TimePicker Time="{Binding TimeEnde}"/>
                 </VerticalStackLayout>
             </Frame>
 
         </HorizontalStackLayout>
         <HorizontalStackLayout HorizontalOptions="End">
             <Button x:Name="ResetBtn" Text="Reset" SemanticProperties.Hint="Maske zurückgesetzt" Clicked="OnResetClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}" Margin="0,0,5,0"/>
-            <Button x:Name="SubmitBtn" Text="Absenden" SemanticProperties.Hint="Daten absenden" Clicked="OnSubmitClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+            <Button x:Name="SubmitBtn" Text="Absenden" Command="{Binding AddStundeCommand}" SemanticProperties.Hint="Daten absenden" Clicked="OnSubmitClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -15,8 +15,7 @@
             VerticalOptions="Center">
 
             <Image
-                Source="logo_img.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                Source="{AppThemeBinding Dark=logo_img.png, Light=logo_img_dark.png}"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
@@ -38,7 +37,6 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
-
             <Label Text="{Binding DateTime}" HorizontalTextAlignment="Center"/>
             
         </VerticalStackLayout>
