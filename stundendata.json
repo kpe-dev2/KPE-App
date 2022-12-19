@@ -1,0 +1,42 @@
+﻿[
+  {
+    "Vorname": "Sascha",
+	"Nachname": "Steklein",
+    "ProjektNummer": "2035",
+    "FreiText": "Erster Eintrag!",
+    "AnfangDatum": "2022-11-26T06:00:00.00Z",
+    "EndDatum": "2022-11-26T17:00:00.00Z"
+  },
+  {
+    "Vorname": "Sascha",
+	"Nachname": "Steklein",
+    "ProjektNummer": "2036",
+    "FreiText": "2. Eintrag!",
+    "AnfangDatum": "2022-11-27T06:00:00.00Z",
+    "EndDatum": "2022-11-27T17:00:00.00Z"
+  },
+  {
+    "Vorname": "Sascha",
+	"Nachname": "Steklein",
+    "ProjektNummer": "2037",
+    "FreiText": "Eintrag Nummer 3!",
+    "AnfangDatum": "2022-11-28T06:00:00.00Z",
+    "EndDatum": "2022-11-28T17:00:00.00Z"
+  },
+  {
+    "Vorname": "Sascha",
+	"Nachname": "Steklein",
+    "ProjektNummer": "2038",
+    "FreiText": "Nummer 4!",
+    "AnfangDatum": "2022-11-29T06:00:00.00Z",
+    "EndDatum": "2022-11-29T17:00:00.00Z"
+  },
+  {
+    "Vorname": "Sascha",
+	"Nachname": "Steklein",
+    "ProjektNummer": "2039",
+    "FreiText": "Keine Lust mehr zu Zählen",
+    "AnfangDatum": "2022-11-30T06:00:00.00Z",
+    "EndDatum": "2022-11-30T17:00:00.00Z"
+  }
+]
