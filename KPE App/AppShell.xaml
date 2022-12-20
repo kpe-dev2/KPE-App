@@ -50,10 +50,10 @@
 
     <FlyoutItem Title="Stunden" FlyoutIcon="{StaticResource IconTwo}">
         <Tab Title="Eingabe" Icon="{StaticResource IconOne}">
-            <ShellContent
+        <ShellContent
                 Title="Eingabe"
                 ContentTemplate="{DataTemplate local:StundenEingabePage}"
-                Route="StundenEingabePage" />
+                Route="StundenÜbersichtPage" />
         </Tab>
         <Tab Title="Übersicht" Icon="{StaticResource IconTwo}">
             <ShellContent

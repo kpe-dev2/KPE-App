@@ -4,16 +4,17 @@
              xmlns:VM="clr-namespace:KPE_App.ViewModels"
              x:Class="KPE_App.ViewPages.StundenEingabePage"
              xmlns:objects="clr-namespace:KPE_App.Objects"
-             x:DataType="VM:StundenViewModel"
-             Title="Eingabe">
-    
+             Title="Eingabe"
+             x:DataType="VM:StundenViewModel">
+
+        
     <VerticalStackLayout HorizontalOptions="CenterAndExpand">
         <Label Text="Stunden Erfassung" Margin="0,10,10,10" FontSize="30" FontAutoScalingEnabled="False" HorizontalOptions="Center"/>
         <HorizontalStackLayout>
             <Frame Opacity="1" BackgroundColor="Transparent" BorderColor="White">
                 <VerticalStackLayout>
                     <Label Text="Vorname:" Margin="0,10,10,10"/>
-                    <Label Text="Name:" Margin="0,10,10,10"/>
+                    <Label Text="Nachname:" Margin="0,10,10,10"/>
                     <Label Text="Projekt Nummer:" Margin="0,10,10,10"/>
                     <Label Text="Freitext:" Margin="0,10,10,10"/>
                     <Label Text="Anfangs Datum:" Margin="0,10,10,10"/>
@@ -25,21 +26,21 @@
 
             <Frame Opacity="1" BackgroundColor="Transparent" BorderColor="White">
                 <VerticalStackLayout >
-                    <Entry Placeholder="Vorname" Text="{Binding Vorname}" />
-                    <Entry Placeholder="Nachname" Text="{Binding Nachname}" />
-                    <Entry Placeholder="Projekt Nummer" Text="{Binding ProjektNummer}" />
-                    <Entry Placeholder="Freitext" Text="{Binding FreiText}" />
-                    <DatePicker Date="{Binding DateAnfang}" />
-                    <TimePicker Time="{Binding TimeAnfang}"/>
-                    <DatePicker Date="{Binding DateEnde}"/>
-                    <TimePicker Time="{Binding TimeEnde}"/>
+                    <Entry Placeholder="Vorname" Text="{Binding NewEntry.Vorname}" />
+                    <Entry Placeholder="Nachname" Text="{Binding NewEntry.Nachname}" />
+                    <Entry Placeholder="Projekt Nummer" Text="{Binding NewEntry.ProjektNummer}" />
+                    <Entry Placeholder="Freitext" Text="{Binding NewEntry.FreiText}" />
+                    <DatePicker Date="{Binding NewEntry.AnfangDatum}" />
+                    <TimePicker Time="{Binding NewEntry.AnfangDatum, Converter={StaticResource mDateTimeToTimeSpanCnv}, ConverterParameter={Binding NewEntry.AnfangDatum}}"/>
+                    <DatePicker Date="{Binding NewEntry.EndDatum}"/>
+                    <TimePicker Time="{Binding NewEntry.EndDatum, Converter={StaticResource mDateTimeToTimeSpanCnv}, ConverterParameter={Binding .}}"/>
                 </VerticalStackLayout>
             </Frame>
 
         </HorizontalStackLayout>
         <HorizontalStackLayout HorizontalOptions="End">
-            <Button x:Name="ResetBtn" Text="Reset" SemanticProperties.Hint="Maske zurückgesetzt" Clicked="OnResetClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}" Margin="0,0,5,0"/>
-            <Button x:Name="SubmitBtn" Text="Absenden" Command="{Binding AddStundeCommand}" SemanticProperties.Hint="Daten absenden" Clicked="OnSubmitClicked" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
+            <Button Text="Reset" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}" Margin="0,0,5,0"/>
+            <Button Text="Absenden" Command="{Binding AddStundeCommand}" BackgroundColor="{AppThemeBinding Dark={StaticResource White},Light={StaticResource Primary}}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

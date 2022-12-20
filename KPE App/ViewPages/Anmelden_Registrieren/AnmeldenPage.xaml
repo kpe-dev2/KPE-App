@@ -30,7 +30,7 @@
                 <controls:OutlinedEntryControl Placeholder="E-Mail-Adresse" Keyboard="Email" WidthRequest="200" Text="{Binding EMail}"/>
                 <controls:OutlinedEntryControl Placeholder="Passwort" IsPassword="True" WidthRequest="200" Text="{Binding Password}"/>
                
-                <!--<Entry Placeholder="Passwort" IsPassword="True" WidthRequest="150" Margin="5">
+                <Entry Placeholder="Passwort" IsPassword="True" WidthRequest="150" Margin="5">
                     <Entry.Behaviors>
                         <toolkit:CharactersValidationBehavior
                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
@@ -38,7 +38,7 @@
                                 Flags="ValidateOnValueChanged"
                                 MinimumCharacterTypeCount="6"/>
                     </Entry.Behaviors>
-                </Entry>-->
+                </Entry>
             </VerticalStackLayout>
             <!--</Frame>-->
         </HorizontalStackLayout>

@@ -2,44 +2,111 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:VM="clr-namespace:KPE_App.ViewModels"
-             x:Class="KPE_App.ViewPages.MainPage">
+             xmlns:controls="clr-namespace:KPE_App.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="KPE_App.ViewPages.MainPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
 
     <ContentPage.BindingContext>
-        <VM:ClockViewModel/>
+        <!--<VM:ClockViewModel/>-->
+        <VM:LoginViewModel/>
     </ContentPage.BindingContext>
-    
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
 
-            <Image
-                Source="{AppThemeBinding Dark=logo_img.png, Light=logo_img_dark.png}"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="controls:OutlinedEntryLoginControl">
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="BorderColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="controls:OutlinedEntryLoginControl">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BorderColor" Value="White" />
+        </Style>
+    </ContentPage.Resources>
 
-            <Label
-                Text="Hallo Kollegen!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+    <Frame CornerRadius="12">
+        <Frame.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                <GradientStop Color="Purple" Offset="0.1"/>
+                <GradientStop Color="Purple" Offset="0.5"/>
+                <GradientStop Color="DeepPink" Offset="1"/>
+            </LinearGradientBrush>
+        </Frame.Background>
 
-            <Label
-                Text="Was sagt ihr zu meiner ersten App?"
-                SemanticProperties.HeadingLevel="Level2"
-                FontSize="18"
-                HorizontalOptions="Center" />
+        <ScrollView>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-            <Label Text="{Binding DateTime}" HorizontalTextAlignment="Center"/>
-            
-        </VerticalStackLayout>
-    </ScrollView>
+            <VerticalStackLayout Spacing="10" Padding="30,0" VerticalOptions="Center">
 
+                <Image
+                    Source="{AppThemeBinding Dark=logo_img.png, Light=logo_img_dark.png}"
+                    HeightRequest="200"
+                    Margin="0,0,0,10"
+                    HorizontalOptions="Center" />
+
+                <!--Eingabefeld für EMail mit EMail-Tastatur-->
+                <controls:OutlinedEntryLoginControl 
+                    BorderColor="White" 
+                    LabelBackgroundColor="Transparent" 
+                    FrameBackgroundColor="Transparent" 
+                    Placeholder="E-Mail-Adresse" 
+                    Keyboard="Email"
+                    WidthRequest="300" 
+                    Text="{Binding EMail}"
+                    Margin="10"
+                    ReturnType="Next"
+                    toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference PWBox}"
+                    />
+
+                <!--ReturnCommand="{Binding MyCmd, Source={RelativeSource AncestorType=Self}}"-->
+                
+                
+                <!--Eingabefeld für Passwörter mit Zeichenerkennung, ab 6 Zeichen verändert sich die Farbe-->
+                <controls:OutlinedEntryLoginControl 
+                    LabelBackgroundColor="Transparent" 
+                    FrameBackgroundColor="Transparent"
+                    Placeholder="Passwort" 
+                    IsPassword="True" 
+                    WidthRequest="300" 
+                    Text="{Binding Password}"
+                    ReturnType="Send"
+                    x:Name="PWBox"
+                    >
+                    <controls:OutlinedEntryLoginControl.Behaviors>
+                        <toolkit:CharactersValidationBehavior
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                Flags="ValidateOnValueChanged"
+                                MinimumCharacterTypeCount="6"/>
+                    </controls:OutlinedEntryLoginControl.Behaviors>
+                </controls:OutlinedEntryLoginControl>
+
+
+                <Label Text="Passwort vergessen?" FontSize="12" HorizontalOptions="Center" TextColor="#FFBEBABA" Margin="0,10,0,0" />
+                <Entry toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference PW2}" ReturnType="Next" />
+                <Entry x:Name="PW2" />
+
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Click me"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center"
+                    CornerRadius="30"
+                    Margin="0,40,0,20">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#9292D9" Offset="0.1"/>
+                            <GradientStop Color="#FFB7DF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Label Text="Noch keinen Account?" FontSize="12" HorizontalOptions="Center" TextColor="#FFBEBABA" />
+                <Label Text="Hier registrieren!" FontSize="12" HorizontalOptions="Center" />
+
+                <!--<Label Text="{Binding DateTime}" HorizontalTextAlignment="Center"/>-->
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Frame>
 </ContentPage>

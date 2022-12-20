@@ -76,13 +76,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\OutlinedEntryLoginControl.xaml.cs">
+	    <DependentUpon>OutlinedEntryLoginControl.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiAsset Update="Resources\Raw\stundendata.json">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\OutlinedEntryLoginControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\OutlinedEntryControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ViewPages\Anmelden_Registrieren\AnmeldenPage.xaml">

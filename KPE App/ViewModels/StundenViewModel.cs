@@ -93,6 +93,12 @@ public partial class StundenViewModel : BaseViewModel
         set { SetProperty(ref _TimeEnde, value); }
     }
 
+    private StundenEintragObj _NewEntry = new();
+    public StundenEintragObj NewEntry
+    {
+        get { return _NewEntry; }
+        set { SetProperty(ref _NewEntry, value); }
+    }
 
     #endregion
 
@@ -147,7 +153,7 @@ public partial class StundenViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    void AddStunde(StundenEintragObj stunde)
+    void AddStunde()
     {
         if (IsBusy)
             return;
@@ -155,14 +161,17 @@ public partial class StundenViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            Stunden.Add(stunde);
-            //if(!string.IsNullOrWhiteSpace(Vorname) && !string.IsNullOrWhiteSpace(Nachname) && !string.IsNullOrWhiteSpace(ProjektNummer))
-            //{
-                
-            //}
+            if (string.IsNullOrWhiteSpace(NewEntry.Vorname) || string.IsNullOrWhiteSpace(NewEntry.Nachname) || string.IsNullOrWhiteSpace(NewEntry.ProjektNummer))
+            {
+                //Bitte vollständig eintragen bla bla bla
+                return;
+            }
 
+            Stunden.Add(NewEntry);
+            //NewEntry = new();
+            Stunden = new(Stunden.OrderBy(x => x.AnfangDatum));
 
-            //Stunden.Add(stunde.Vorname = Vorname, stunde.Nachname = Nachname, stunde.ProjektNummer = ProjektNummer, stunde.FreiText = FreiText);
+            //Message Erfolgreich eingetragen
         }
         catch (Exception ex)
         {

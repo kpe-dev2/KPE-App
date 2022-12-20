@@ -51,14 +51,14 @@ public partial class OutlinedEntryControl : Grid
 
     public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(
       propertyName: nameof(IsPassword),
-      returnType: typeof(string),
+      returnType: typeof(bool),
       declaringType: typeof(OutlinedEntryControl),
       defaultValue: null,
       defaultBindingMode: BindingMode.OneWay);
 
-    public string IsPassword
+    public bool IsPassword
     {
-        get => (string)GetValue(IsPasswordProperty);
+        get => (bool)GetValue(IsPasswordProperty);
         set { SetValue(IsPasswordProperty, value); }
     }
 

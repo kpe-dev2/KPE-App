@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             RowDefinitions="Auto"
+             xmlns:controls="clr-namespace:KPE_App.Controls"
+             x:Name="this"
+             x:Class="KPE_App.Controls.OutlinedEntryLoginControl">
+
+    <Frame Grid.Row="0" Padding="8,2,8,2" BorderColor="{Binding Source={x:Reference this},Path=BorderColor}" BackgroundColor="{Binding Source={x:Reference this},Path=FrameBackgroundColor}">
+        <controls:BorderlessEntry x:Name="txtEntry" 
+               Focused="TxtEntry_Focused" 
+               Unfocused="TxtEntry_Unfocused"
+               BackgroundColor="{Binding Source={x:Reference this},Path=FrameBackgroundColor}"
+               Keyboard="{Binding Source={x:Reference this},Path=Keyboard}"
+               IsPassword="{Binding Source={x:Reference this},Path=IsPassword}"
+               TextColor="{Binding Source={x:Reference this},Path=TextColor}"
+               Text="{Binding Source={x:Reference this},Path=Text}"
+               ReturnCommand="{Binding Source={x:Reference this},Path=ReturnCommand}"
+               ReturnType="{Binding Source={x:Reference this},Path=ReturnType}"/>
+            
+
+    </Frame>
+
+    <Label Grid.Row="0" 
+           FontSize="15"
+           x:Name="lblPlaceholder"
+           Margin="10,0,10,0"
+           Text="{Binding Source={x:Reference this},Path=Placeholder}"
+           BackgroundColor="{Binding Source={x:Reference this},Path=LabelBackgroundColor}"
+           HorizontalOptions="StartAndExpand"
+           VerticalOptions="CenterAndExpand"
+           />
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+    </Grid.GestureRecognizers>
+</Grid>

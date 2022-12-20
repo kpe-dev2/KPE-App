@@ -1,4 +1,6 @@
-﻿namespace KPE_App.ViewPages;
+﻿using System.Windows.Input;
+
+namespace KPE_App.ViewPages;
 
 public partial class MainPage : ContentPage
 {
@@ -7,6 +9,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		BindingContext= this;
 	}
 
 	private void OnCounterClicked(object sender, EventArgs e)
@@ -20,5 +23,12 @@ public partial class MainPage : ContentPage
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+    private void Entry_Completed(object sender, EventArgs e)
+    {
+		PWBox.Focus();
+    }
+
+
 }
 

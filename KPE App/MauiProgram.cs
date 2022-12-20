@@ -3,6 +3,7 @@ using KPE_App.Services;
 using KPE_App.ViewModels;
 using KPE_App.ViewPages;
 using KPE_App.Controls;
+using CommunityToolkit.Maui;
 
 namespace KPE_App;
 
@@ -14,6 +15,7 @@ public static class MauiProgram
 		builder
             .UseSkiaSharp(true)
             .UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -37,8 +39,8 @@ public static class MauiProgram
 #endif
 			}
 		});
-
-		builder.Services.AddSingleton<StundenViewModel>();
+        builder.Services.AddSingleton<StundenEingabePage>();
+        builder.Services.AddSingleton<StundenViewModel>();
         builder.Services.AddSingleton<StundenÜbersichtPage>();
 		builder.Services.AddSingleton<StundenService>();
 
